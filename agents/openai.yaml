@@ -1,0 +1,6 @@
+interface:
+  display_name: "Handholder"
+  short_description: "Set up Android gaming handhelds safely"
+  icon_small: "./assets/handholder-icon.png"
+  icon_large: "./assets/handholder-icon.png"
+  default_prompt: "Use $handholder to configure, migrate, repair, or audit my Android gaming handheld."
