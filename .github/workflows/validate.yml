@@ -1,0 +1,63 @@
+name: Validate Handholder
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Check public-data hygiene
+        run: bash scripts/validate-public.sh
+
+      - name: Check shell syntax
+        run: bash -n scripts/*.sh
+
+      - name: Check skill structure
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          root = Path.cwd()
+          skill = root / "SKILL.md"
+          text = skill.read_text(encoding="utf-8")
+          parts = text.split("---", 2)
+
+          if len(parts) != 3 or parts[0].strip():
+              raise SystemExit("SKILL.md must start with YAML frontmatter")
+
+          fields = {}
+          for line in parts[1].splitlines():
+              if ":" not in line:
+                  continue
+              key, value = line.split(":", 1)
+              fields[key.strip()] = value.strip()
+
+          if not re.fullmatch(r"[a-z0-9-]+", fields.get("name", "")):
+              raise SystemExit("frontmatter name must use lowercase letters, digits, or hyphens")
+          if not fields.get("description"):
+              raise SystemExit("frontmatter description is required")
+          if not parts[2].strip():
+              raise SystemExit("SKILL.md body is empty")
+
+          required = (
+              "README.md",
+              "agents/openai.yaml",
+              "assets/handholder-icon.png",
+              "scripts/probe-device.sh",
+              "scripts/validate-public.sh",
+          )
+          missing = [path for path in required if not (root / path).is_file()]
+          if missing:
+              raise SystemExit(f"missing required files: {', '.join(missing)}")
+          PY

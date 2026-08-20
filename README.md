@@ -2,6 +2,8 @@
 
 ![Handholder icon](assets/handholder-icon.png)
 
+[![Validate Handholder](https://github.com/viticci/handholder/actions/workflows/validate.yml/badge.svg)](https://github.com/viticci/handholder/actions/workflows/validate.yml)
+
 Handholder is a Codex skill for setting up Android gaming handhelds safely. It can inspect a connected device, install a frontend and emulators, move a lawful game library and saves, and verify that the result works from the controller.
 
 It has tested guidance for the AYN Thor and Retroid Pocket Nova. Other Android handhelds use the same cautious workflow and can gain their own small device profile.
