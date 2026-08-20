@@ -6,6 +6,14 @@ Handholder is a Codex skill for setting up Android gaming handhelds safely. It c
 
 It has tested guidance for the AYN Thor and Retroid Pocket Nova. Other Android handhelds use the same cautious workflow and can gain their own small device profile.
 
+## Install Handholder
+
+Ask Codex:
+
+> Install the Handholder skill from https://github.com/viticci/handholder
+
+Start a new Codex task after installation so the skill list refreshes. If you maintain skills manually, clone this repository as `handholder` inside your Codex skills directory.
+
 ## What it handles
 
 - Safe ADB discovery with explicit device selection
@@ -32,13 +40,13 @@ Handholder inventories and backs up relevant data before it replaces, clears, or
 
 Read [SKILL.md](SKILL.md) first. Then:
 
-1. Run `scripts/probe-device.sh [serial]`.
+1. Run `bash scripts/probe-device.sh [serial]`.
 2. Read `references/device-and-adb.md`.
 3. Read only the matching file in `references/devices/`.
 4. Load the Cocoon, emulator, or save references only when those parts are in scope.
 5. Verify current releases from official sources; profile versions are never authoritative.
 6. Test a representative game for every configured system from the frontend.
-7. Run `scripts/validate-public.sh` before publishing changes.
+7. Run `bash scripts/validate-public.sh` before publishing changes.
 
 The skill must not contain a person's home path, device serial, credentials, ROM filenames, or assumptions copied from one setup session.
 
@@ -67,7 +75,7 @@ Start with the generic workflow. Add a profile only for facts that live probing 
 ## Validate a contribution
 
 ```sh
-./scripts/validate-public.sh
+bash scripts/validate-public.sh
 python3 /path/to/skill-creator/scripts/quick_validate.py .
 ```
 

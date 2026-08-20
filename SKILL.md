@@ -9,7 +9,7 @@ Build a verified, console-like Android handheld without assuming a model, host p
 
 ## Route the task
 
-1. Run `scripts/probe-device.sh [serial]` before changing the device.
+1. Run `bash scripts/probe-device.sh [serial]` before changing the device.
 2. Identify the device from live properties. Read only the matching profile:
    - AYN Thor: [references/devices/ayn-thor.md](references/devices/ayn-thor.md)
    - Retroid Pocket Nova: [references/devices/retroid-pocket-nova.md](references/devices/retroid-pocket-nova.md)
@@ -76,7 +76,7 @@ Build a verified, console-like Android handheld without assuming a model, host p
 - Verify controller input, audio, aspect ratio, suspend/resume, relaunch, frontend return behavior, and one representative title for every configured system.
 - Capture and inspect every physical panel on multi-display devices. A running process does not prove correct screen ownership.
 - Remove only exact, enumerated setup artifacts after the installed apps, copied data, and artwork are proven.
-- Run `scripts/validate-public.sh` before publishing changes to this skill.
+- Run `bash scripts/validate-public.sh` before publishing changes to this skill.
 - Leave the handheld on Cocoon or the user's chosen frontend and report versions, tested systems, save coverage, scrape coverage, exclusions, and unresolved limitations.
 
 ## Safety invariants

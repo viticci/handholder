@@ -7,7 +7,7 @@ Use this reference for discovery, capture, controller input, UI automation, and 
 Prefer `ADB_BIN` when supplied, then `command -v adb`. The generic probe intentionally has no host-specific SDK fallback.
 
 ```sh
-scripts/probe-device.sh [serial]
+bash scripts/probe-device.sh [serial]
 ```
 
 The probe fails when zero or multiple authorized devices exist and no serial was passed. Always use `adb -s SERIAL` after selection.
