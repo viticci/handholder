@@ -12,6 +12,7 @@ Use this profile only after live properties identify a Retroid Pocket Nova. It i
 - Use Standard performance with Smart fan mode as a balanced default. Standard or low performance is enough for older systems; raise performance per game for GameCube or PlayStation 2 when needed.
 - The built-in controller can use Nintendo-style or Xbox-style system navigation. Record the choice and map emulators consistently. Switching the quick-settings tile briefly disconnects the controller; wait for it to return and probe inputs again because its reported device name changes.
 - Do not infer the RetroArch reservation name from the product name. A Nova in Xbox mode can identify itself to RetroArch with a different Retroid model label. Press one real built-in control, read RetroArch's connection message, and reserve that exact live name for player 1.
+- A controller-mode change can leave `input_player1_reserved_device` pointing at the previous mode. Typical symptoms are the built-in controls moving to Port 2 or Start doing nothing. Compare the saved reservation with RetroArch's current connection message before remapping buttons. Observed RetroArch names include `Retroid Pocket 5` in native mode and `Retroid Pocket 5 (Xbox)` in Xbox mode; treat both as observations, not permanent aliases.
 - M1 and M2 are useful as emulator hotkeys. Leave them as distinct buttons until mappings are tested.
 - Optional battery-health settings include an 80 percent charge cap and slower charging. Do not change them without the user's preference.
 
