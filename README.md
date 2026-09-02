@@ -62,6 +62,8 @@ handholder/
 ├── agents/openai.yaml               Skill picker metadata
 ├── assets/handholder-icon.png       Project icon
 ├── scripts/probe-device.sh          Read-only ADB inventory
+├── scripts/convert-dolphin-dds.py   Safe DDS-to-PNG conversion, including BC7
+├── scripts/downscale-dolphin-pack.py Build a screen-sized PNG edition
 ├── scripts/validate-public.sh       Public-data hygiene check
 └── references/
     ├── device-and-adb.md            Displays, input, storage, and UI safety

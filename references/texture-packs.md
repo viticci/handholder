@@ -23,7 +23,11 @@ Use this reference for user-created high-resolution or alternate texture packs. 
 
 - Match the game ID and documented custom-texture layout.
 - Enable custom texture loading only for the intended game or configuration scope. Texture prefetch can consume substantial memory; test before enabling it.
-- A pack can work on desktop and still render incorrectly in an Android renderer. If visible corruption is isolated to one DDS encoding, convert a staged copy to a supported lossless image format, count conversion failures, and test again. Do not rewrite the source pack or assume all DDS files are bad.
+- A pack can work on desktop and still render incorrectly in an Android renderer. Inspect the DDS FourCC or DX10 format before conversion; do not trust a decoder merely because it returns an image. Pillow can silently decode BC7 (`DXGI 98` or `99`) as black. Use `scripts/convert-dolphin-dds.py` with `texture2ddecoder` for BC7, preserve the source pack, count every conversion failure, and compare visible image data before copying the result.
+- Some packs contain header-only DDS stubs: they declare dimensions but contain no compressed pixels. The converter reports these as `skipped_invalid` and omits them so Dolphin falls back to the clean texture inside the game. Never install a PNG decoded from a truncated DDS file; it can appear as colored noise or a black rectangle in-game.
+- Desktop 4K and 8K packs can be larger than the handheld can display or store. Prefer a lossless 2x-native device edition for a roughly 1280x960 display. Use `scripts/downscale-dolphin-pack.py`, preserve mip relationships and filenames, and retain the full converted source off-device.
+- If a very large pack is stable until Dolphin preloads it and Android then kills the process for memory pressure, set `CacheHiresTextures = False` under `[Video_Settings]` in only that game's INI. This keeps replacement textures enabled but loads them on demand. Prove the fix with the game's process-exit reason, memory use, and visible gameplay; do not disable the global cache for every title.
+- Install large packs in small, game-ID-specific batches. Keep a failed pack outside `Load/Textures`, retain its diagnostic copy, and restore the prior pack before testing another title.
 - Keep widescreen hacks separate from texture replacement. Do not enable a global widescreen hack to make a pack fit.
 
 Reference: [Dolphin resource packs](https://github.com/dolphin-emu/dolphin/blob/master/docs/ResourcePacks.md)
