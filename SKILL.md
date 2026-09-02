@@ -1,6 +1,6 @@
 ---
 name: handholder
-description: Set up, migrate, repair, or audit Android gaming handhelds over ADB, including Cocoon, emulators, lawful ROM and save migration, artwork, controls, displays, and launch testing. Includes profiles for AYN Thor and Retroid Pocket Nova; use the generic workflow for other Android handhelds.
+description: Set up, migrate, repair, or audit Android gaming handhelds over ADB, including Cocoon, emulators, RetroArch hotkeys and shaders, replacement textures, lawful ROM and save migration, artwork, controls, displays, and launch testing. Includes profiles for AYN Thor and Retroid Pocket Nova; use the generic workflow for other Android handhelds.
 ---
 
 # Handholder
@@ -17,7 +17,9 @@ Build a verified, console-like Android handheld without assuming a model, host p
 3. Read [references/device-and-adb.md](references/device-and-adb.md) before screen, touch, or controller automation.
 4. Read [references/cocoon.md](references/cocoon.md) when Cocoon is in scope.
 5. Read [references/emulators.md](references/emulators.md) before selecting apps, cores, BIOS paths, or platform mappings.
-6. Read [references/saves-and-native-ports.md](references/saves-and-native-ports.md) for save migration, native ports, or dual-screen mods.
+6. Read [references/retroarch.md](references/retroarch.md) when RetroArch controls, hotkeys, save states, shaders, or controller profiles are in scope.
+7. Read [references/texture-packs.md](references/texture-packs.md) before installing replacement textures.
+8. Read [references/saves-and-native-ports.md](references/saves-and-native-ports.md) for save migration, native ports, or dual-screen mods.
 
 ## Required workflow
 
@@ -35,6 +37,7 @@ Build a verified, console-like Android handheld without assuming a model, host p
 - Verify releases against the project's official site, repository, store listing, or signed update channel immediately before installation.
 - Prefer official builds. Use a community fork only when it supplies a required capability and its provenance, package ID, signer, and update path are understood.
 - Record the source URL, version, package ID, checksum, and signer for sideloaded APKs.
+- Before updating an emulator, preserve its configuration and saves and record the installed APK identity and signer. An app that returns to onboarding after an update is not configured; stop before supplying BIOS data or keys outside the approved scope.
 - Never assume a version or package ID from a dated device profile is still current.
 
 ### 3. Transfer the library
@@ -52,7 +55,7 @@ Build a verified, console-like Android handheld without assuming a model, host p
 - Install the smallest maintained set that covers the requested systems.
 - Open each app once, grant only needed storage access, set the ROM and BIOS roots, map the built-in controller, and choose a renderer appropriate to the device.
 - Preserve native 4:3 output on 4:3 displays unless the game itself supports widescreen. Use per-game overrides for compatibility or performance exceptions.
-- For RetroArch, install only the selected cores, update core information and shaders when requested, configure hotkeys deliberately, and save overrides at the correct scope.
+- For RetroArch, follow [references/retroarch.md](references/retroarch.md). Install only the selected cores, configure physical controls and hotkeys deliberately, and save overrides at the correct scope.
 - Do not call an emulator configured until a representative game reaches interactive gameplay with working controls and audio.
 
 ### 5. Configure Cocoon
@@ -75,9 +78,10 @@ Build a verified, console-like Android handheld without assuming a model, host p
 
 - Verify controller input, audio, aspect ratio, suspend/resume, relaunch, frontend return behavior, and one representative title for every configured system.
 - Capture and inspect every physical panel on multi-display devices. A running process does not prove correct screen ownership.
-- Remove only exact, enumerated setup artifacts after the installed apps, copied data, and artwork are proven.
+- Keep a storage reserve appropriate to the device and user. A request to install many optional assets is not permission to fill the device.
+- Remove only exact, enumerated test and setup artifacts after the installed apps, copied data, and artwork are proven. Never delete by a broad temporary-name prefix.
 - Run `bash scripts/validate-public.sh` before publishing changes to this skill.
-- Leave the handheld on Cocoon or the user's chosen frontend and report versions, tested systems, save coverage, scrape coverage, exclusions, and unresolved limitations.
+- Stop test games, leave the handheld on Cocoon or the user's chosen frontend, and report versions, tested systems, save coverage, scrape coverage, exclusions, and unresolved limitations.
 
 ## Safety invariants
 

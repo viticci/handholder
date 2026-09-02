@@ -20,7 +20,8 @@ Start a new Codex task after installation so the skill list refreshes. If you ma
 
 - Safe ADB discovery with explicit device selection
 - Cocoon setup, platform mapping, artwork scraping, and launch tests
-- RetroArch and standalone emulators
+- RetroArch controls, hotkeys, save states, shaders, and standalone emulators
+- Replacement-texture installation with space, format, and live-load checks
 - Internal or removable storage layouts
 - ROM, BIOS, and save migration from user-supplied backups
 - Controller, display, aspect-ratio, audio, suspend, and resume checks
@@ -45,7 +46,7 @@ Read [SKILL.md](SKILL.md) first. Then:
 1. Run `bash scripts/probe-device.sh [serial]`.
 2. Read `references/device-and-adb.md`.
 3. Read only the matching file in `references/devices/`.
-4. Load the Cocoon, emulator, or save references only when those parts are in scope.
+4. Load the Cocoon, emulator, RetroArch, texture-pack, or save references only when those parts are in scope.
 5. Verify current releases from official sources; profile versions are never authoritative.
 6. Test a representative game for every configured system from the frontend.
 7. Run `bash scripts/validate-public.sh` before publishing changes.
@@ -66,6 +67,8 @@ handholder/
     ├── device-and-adb.md            Displays, input, storage, and UI safety
     ├── cocoon.md                    Frontend setup and scrape verification
     ├── emulators.md                 Emulator and core selection
+    ├── retroarch.md                 Hotkeys, save states, controls, and shaders
+    ├── texture-packs.md             Replacement-texture installation and proof
     ├── saves-and-native-ports.md    Save matching and native ports
     └── devices/                     Small model-specific profiles
 ```

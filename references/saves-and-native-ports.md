@@ -1,6 +1,6 @@
 # Saves and native ports
 
-Use this reference for save reconciliation, native decompilation ports, texture packs, and multi-screen mods.
+Use this reference for save reconciliation, native decompilation ports, and multi-screen mods. Use [texture-packs.md](texture-packs.md) for replacement textures.
 
 ## Save reconciliation
 
@@ -43,7 +43,3 @@ Android scoped storage can hide app-owned paths from ADB. Use supported import/e
 - Capture every panel and verify ownership visually.
 - Confirm gameplay, HUD, map, inventory, touch targets, and aspect ratio on their intended screens.
 - A process running on one screen does not prove the second screen belongs to the same app.
-
-## Texture packs
-
-Check title ID, region, directory name, emulator option, and pack version. File presence is insufficient: verify the emulator log or visible asset replacement proves the pack loaded.

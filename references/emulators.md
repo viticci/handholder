@@ -42,13 +42,7 @@ DuckStation requires a user-dumped PlayStation BIOS to play games. Its onboardin
 
 ## RetroArch baseline
 
-- Use Vulkan when the selected cores and shaders support it; use GL per-core where Vulkan is incompatible.
-- Update core information and the selected shader package before configuring presets.
-- Set a BIOS/system directory explicitly and verify that required files are detected.
-- Reserve the built-in gamepad for player 1 when Android exposes other controller-like devices. ADB `input keyevent` creates a `Virtual` input device that can take port 1 during automated testing. Discover the controller name live, set `input_player1_reserved_device` to that exact RetroArch name, set `input_player1_device_reservation_type` to `2` (reserved), restart RetroArch, and confirm its on-screen connection message says `port 1`.
-- Configure hotkey enable, menu toggle, quit, save/load state, fast-forward, and rewind without shadowing normal game buttons.
-- Save shaders and options at the intended game, content-directory, core, or global scope.
-- Optional 120 Hz black-frame insertion reduces brightness and can show visible flicker. Enable it only at the user's request and test comfort; never make it a silent default.
+Read [retroarch.md](retroarch.md) before changing RetroArch controls, hotkeys, save states, shaders, or controller profiles. Keep BIOS handling and core selection in the approved task scope.
 
 ## 4:3 display baseline
 

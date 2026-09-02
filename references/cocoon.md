@@ -4,7 +4,7 @@ Use this reference to install and configure Cocoon, map players, organize Androi
 
 ## Installation and storage
 
-- Get the current release from `https://cocoon-shell.com/` or its official release channel.
+- Get the current release from [Cocoon's official site](https://cocoon-shell.com/) or its official release channel.
 - Verify version, package ID, checksum, and signer before an in-place sideload.
 - Open Cocoon once before configuring storage permissions.
 - Use the storage root requested by the user. Do not copy a removable-storage layout to an internal-storage setup or vice versa.
