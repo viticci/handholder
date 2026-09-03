@@ -26,6 +26,7 @@ Android scoped storage can hide app-owned paths from ADB. Use supported import/e
 - Read the active Slot A device setting before importing. Recent official Dolphin builds commonly default Slot A to a `GCI Folder`, but this is version-specific.
 - With a GCI-folder card, the usual app-owned layout is `files/GC/<REGION>/Card A/`. Confirm the live path and region rather than assuming `USA`.
 - Match the GCI header or filename title ID and region to the disc. Back up any existing destination, copy the `.gci`, verify its hash, then prove the expected slot in-game.
+- An ADB-pushed GCI can be readable but not writable. A typical symptom is that the imported slot loads, a normal in-game save reports a storage or file-open error, and the GCI hash and modification time do not change. Compare its numeric owner, group, and mode with a Dolphin-created GCI in the same card folder. If only group write is missing, change only the imported file to match the working sibling—commonly mode `0660` on shared external storage—then repeat a real in-game save and confirm both Dolphin's success message and a changed hash or modification time. Do not recursively change the card directory or guess at ownership.
 - With a raw memory-card device, use Dolphin's supported import flow instead of dropping a GCI beside the raw card.
 
 ## Native ports

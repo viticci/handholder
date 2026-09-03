@@ -52,6 +52,14 @@ Read [retroarch.md](retroarch.md) before changing RetroArch controls, hotkeys, s
 - PlayStation 2: start at 2x internal resolution, then test 3x per game. Use Vulkan or OpenGL according to the emulator and title.
 - PSP: keep original 16:9 output with letterboxing unless the game offers a safe alternative.
 
+## Dolphin per-game cheats
+
+- Identify the disc's exact six-character game ID and region before selecting a code. Separate regional copies need separate `GameSettings/<GAMEID>.ini` files even when the title is the same.
+- Keep cheats per game. Do not invert a controller axis globally to repair one title unless the user explicitly wants that behavior everywhere.
+- Dolphin's `[ActionReplay]` section accepts decrypted `XXXXXXXX YYYYYYYY` lines and encrypted `XXXX-XXXX-XXXXX` blocks. Put the identical `$Code Name` under `[ActionReplay_Enabled]`, and confirm the global Dolphin configuration has cheats enabled.
+- Back up any existing per-game file before replacement. Merge unrelated settings instead of overwriting them.
+- Prove activation as well as behavior. A short temporary `Logger.ini` with file logging, verbosity `4`, and `ActionReplay = True` can show the code name, decoded address, and written value. Restore the previous logger immediately after the test so per-frame cheat logging cannot fill storage or hurt performance. Finish with the requested stick movement in live gameplay.
+
 ## Test standard
 
 For each configured emulator family, prove:
