@@ -59,6 +59,12 @@ Do not put secrets, device serials, ROM names, or private host paths in a public
 
 ## Use shader presets at a narrow scope
 
+Check activation before replacing a preset that appears ineffective. `auto_shaders_enable` allows preset discovery, but `video_shader_enable = "false"` prevents shader rendering even when the correct `.slangp` file exists. Color correction is independent, so vivid colors do not prove that an LCD grid is active.
+
+For a core-specific repair, merge `video_shader_enable = "true"` into `config/<CORE>/<CORE>.cfg` while keeping the existing directory presets and palette options. Use a narrower content-directory override when only one system using that core is in scope. Do not enable shaders globally merely to fix one platform.
+
+Verify the running Quick Menu shows Video Shaders enabled and inspect an Android screen capture for the rendered effect. Then quit normally and relaunch from the frontend to prove the setting persists. An internal emulator screenshot may omit post-processing; prefer a capture of the displayed output for this check.
+
 Update the selected shader package before choosing presets. Start at content-directory or core scope, test several games, and promote a preset to a broader scope only when the user wants consistent behavior.
 
 - Monochrome and color handheld systems: start with a restrained LCD grid and a vivid but non-clipping palette. Avoid a washed-out global color-correction preset when the user wants a display-like color mode.
