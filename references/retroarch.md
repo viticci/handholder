@@ -76,6 +76,19 @@ On a 120 Hz display, shader subframes can improve motion presentation without fo
 
 Verify dark scenes, bright gradients, scrolling motion, small text, performance, integer scaling, and menu readability. A preset loading without an error is not proof that it looks correct.
 
+### Gentler LCD-grid option
+
+If a working LCD Grid v2 preset feels too harsh, offer LCD3x with a lighter grid rather than changing colors the user already likes. A tested starting point for GBC is `handheld/lcd3x.slangp` with:
+
+```ini
+brighten_lcd = "6.000000"
+brighten_scanlines = "16.000000"
+```
+
+In LCD3x, raising Brighten LCD from 4 to 6 reduces the grid's contrast; it does not change the device's screen-brightness setting. Keep core color correction disabled when the user wants vivid, uncorrected colors. This is a comfort-oriented alternative, not a universal OLED recommendation. Ask for feedback before treating the result as preferred, and do not infer comfort from a screenshot.
+
+Preserve the previous preset and change only the requested content-directory preset. To compare without losing current gameplay, pause in the Quick Menu, load the replacement preset, verify its live parameters, and resume the same scene. Do not restart or force-stop a user's active game just to change shaders.
+
 Useful public references:
 
 - [Libretro input and controls](https://docs.libretro.com/guides/input-and-controls/)
